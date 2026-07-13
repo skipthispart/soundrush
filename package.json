@@ -4,9 +4,7 @@
   "main": "electron/main.js",
   "scripts": {
     "electron-dev": "electron .",
-    "electron-build": "electron-builder",
-    "build": "next build",
-    "start": "next start"
+    "electron-build": "electron-builder --linux"
   },
   "build": {
     "appId": "com.soundrush.app",
@@ -14,27 +12,14 @@
     "directories": { "output": "release" },
     "files": [
       "electron/**/*",
-      "scripts/**/*",
-      "venv/**/*",
-      ".next/**/*",
       "public/**/*",
       "package.json"
     ],
-    "extraResources": [
-      { "from": "venv", "to": "venv" },
-      { "from": "scripts", "to": "scripts" }
-    ],
-    "win": { "target": "nsis", "icon": "public/icon.jpeg" },
-    "mac": { "target": "dmg", "icon": "public/icon.jpeg" },
     "linux": { "target": "AppImage", "icon": "public/icon.jpeg" }
   },
   "devDependencies": {
     "electron": "^35.0.0",
     "electron-builder": "^25.0.0"
   },
-  "dependencies": {
-    "next": "^16.1.1",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
-  }
+  "dependencies": {}
 }
