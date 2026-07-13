@@ -1,0 +1,320 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-inter);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+/* Light theme — clean minimalist white (default) */
+:root {
+  --radius: 0.625rem;
+  --background: oklch(0.98 0 0);
+  --foreground: oklch(0.05 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.05 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.05 0 0);
+  --primary: oklch(0.05 0 0);
+  --primary-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.94 0 0);
+  --secondary-foreground: oklch(0.05 0 0);
+  --muted: oklch(0.95 0 0);
+  --muted-foreground: oklch(0.45 0 0);
+  --accent: oklch(0.92 0 0);
+  --accent-foreground: oklch(0.05 0 0);
+  --destructive: oklch(0.55 0.22 25);
+  --border: oklch(0 0 0 / 12%);
+  --input: oklch(0 0 0 / 12%);
+  --ring: oklch(0 0 0 / 30%);
+  --chart-1: oklch(0.05 0 0);
+  --chart-2: oklch(0.3 0 0);
+  --chart-3: oklch(0.5 0 0);
+  --chart-4: oklch(0.7 0 0);
+  --chart-5: oklch(0.15 0 0);
+  --sidebar: oklch(0.97 0 0);
+  --sidebar-foreground: oklch(0.05 0 0);
+  --sidebar-primary: oklch(0.05 0 0);
+  --sidebar-primary-foreground: oklch(0.98 0 0);
+  --sidebar-accent: oklch(0.92 0 0);
+  --sidebar-accent-foreground: oklch(0.05 0 0);
+  --sidebar-border: oklch(0 0 0 / 12%);
+  --sidebar-ring: oklch(0 0 0 / 30%);
+}
+
+/* Dark theme — pure black minimalist. Uses :where() to keep 0 specificity
+   so the cascade order (this block comes AFTER :root) makes it win. */
+.dark {
+  --radius: 0.625rem;
+  --background: oklch(0 0 0);
+  --foreground: oklch(0.97 0 0);
+  --card: oklch(0.07 0 0);
+  --card-foreground: oklch(0.97 0 0);
+  --popover: oklch(0.07 0 0);
+  --popover-foreground: oklch(0.97 0 0);
+  --primary: oklch(0.97 0 0);
+  --primary-foreground: oklch(0 0 0);
+  --secondary: oklch(0.13 0 0);
+  --secondary-foreground: oklch(0.97 0 0);
+  --muted: oklch(0.1 0 0);
+  --muted-foreground: oklch(0.55 0 0);
+  --accent: oklch(0.18 0 0);
+  --accent-foreground: oklch(0.97 0 0);
+  --destructive: oklch(0.62 0.22 25);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 12%);
+  --ring: oklch(1 0 0 / 35%);
+  --chart-1: oklch(0.97 0 0);
+  --chart-2: oklch(0.7 0 0);
+  --chart-3: oklch(0.5 0 0);
+  --chart-4: oklch(0.3 0 0);
+  --chart-5: oklch(0.85 0 0);
+  --sidebar: oklch(0.07 0 0);
+  --sidebar-foreground: oklch(0.97 0 0);
+  --sidebar-primary: oklch(0.97 0 0);
+  --sidebar-primary-foreground: oklch(0 0 0);
+  --sidebar-accent: oklch(0.18 0 0);
+  --sidebar-accent-foreground: oklch(0.97 0 0);
+  --sidebar-border: oklch(1 0 0 / 12%);
+  --sidebar-ring: oklch(1 0 0 / 35%);
+}
+
+/* Re-declare :root variables but with .dark override by cascade order.
+   Putting this AFTER the :root block above ensures .dark wins when present. */
+.dark {
+  --background: oklch(0 0 0) !important;
+  --foreground: oklch(0.97 0 0) !important;
+  --card: oklch(0.07 0 0) !important;
+  --card-foreground: oklch(0.97 0 0) !important;
+  --popover: oklch(0.07 0 0) !important;
+  --popover-foreground: oklch(0.97 0 0) !important;
+  --primary: oklch(0.97 0 0) !important;
+  --primary-foreground: oklch(0 0 0) !important;
+  --secondary: oklch(0.13 0 0) !important;
+  --secondary-foreground: oklch(0.97 0 0) !important;
+  --muted: oklch(0.1 0 0) !important;
+  --muted-foreground: oklch(0.55 0 0) !important;
+  --accent: oklch(0.18 0 0) !important;
+  --accent-foreground: oklch(0.97 0 0) !important;
+  --border: oklch(1 0 0 / 12%) !important;
+  --input: oklch(1 0 0 / 12%) !important;
+  --ring: oklch(1 0 0 / 35%) !important;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "ss01", "cv01", "cv02";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 8px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--muted-foreground);
+  }
+  ::selection {
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+}
+
+@layer utilities {
+  /*
+   * Title shine — base text dimmed so the bright band is visible.
+   * Dark mode: base ~0.7 (light gray, readable), band pure white.
+   * Light mode: base ~0.15 (near black), band soft light gray (no sharp white).
+   */
+  .shine-text {
+    background-image: linear-gradient(
+      90deg,
+      oklch(0.15 0 0) 0%,
+      oklch(0.15 0 0) 38%,
+      oklch(0.3 0 0) 46%,
+      oklch(0.55 0 0) 50%,
+      oklch(0.3 0 0) 54%,
+      oklch(0.15 0 0) 62%,
+      oklch(0.15 0 0) 100%
+    );
+    background-size: 200% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    animation: shine-sweep 5s ease-in-out infinite;
+  }
+  /* Dark mode: light gray base (whiter than before), pure white band */
+  .dark .shine-text {
+    background-image: linear-gradient(
+      90deg,
+      oklch(0.7 0 0) 0%,
+      oklch(0.7 0 0) 38%,
+      oklch(0.85 0 0) 46%,
+      oklch(1 0 0) 50%,
+      oklch(0.85 0 0) 54%,
+      oklch(0.7 0 0) 62%,
+      oklch(0.7 0 0) 100%
+    );
+  }
+}
+
+/*
+ * Link box pulse — declared OUTSIDE @layer utilities so Tailwind v4 keeps it.
+ * Synced with the title shine: same duration (5s) and timing (ease-in-out)
+ * so the band sweeps across both at the same time.
+ */
+.link-pulse {
+  position: relative;
+}
+.link-pulse::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 38%,
+    oklch(0 0 0 / 0.3) 46%,
+    oklch(0 0 0 / 0.5) 50%,
+    oklch(0 0 0 / 0.3) 54%,
+    transparent 62%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: shine-sweep 5s ease-in-out infinite;
+  pointer-events: none;
+}
+.dark .link-pulse::before {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 38%,
+    oklch(1 0 0 / 0.35) 46%,
+    oklch(1 0 0 / 0.6) 50%,
+    oklch(1 0 0 / 0.35) 54%,
+    transparent 62%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+}
+
+/*
+ * Download / Extract button — idle glow + slow border shimmer.
+ * No hover/active effects: button stays completely static on mouse interaction.
+ */
+.btn-glow {
+  position: relative;
+  isolation: isolate;
+}
+.btn-glow:not(:disabled) {
+  box-shadow: 0 4px 14px -4px oklch(0.5 0 0 / 0.35);
+}
+.dark .btn-glow:not(:disabled) {
+  box-shadow: 0 4px 18px -4px oklch(1 0 0 / 0.25);
+}
+/* Idle shimmer — always visible when enabled */
+.btn-glow:not(:disabled)::after {
+  content: "";
+  position: absolute;
+  inset: -1.5px;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 35%,
+    oklch(0.6 0 0 / 0.5) 48%,
+    oklch(0.9 0 0 / 0.8) 50%,
+    oklch(0.6 0 0 / 0.5) 52%,
+    transparent 65%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 1.5px;
+  animation: shine-sweep 3s ease-in-out infinite;
+  pointer-events: none;
+  opacity: 0.55;
+}
+.dark .btn-glow:not(:disabled)::after {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 35%,
+    oklch(0.7 0 0 / 0.5) 48%,
+    oklch(1 0 0 / 0.8) 50%,
+    oklch(0.7 0 0 / 0.5) 52%,
+    transparent 65%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+}
+
+@keyframes shine-sweep {
+  0% { background-position: 150% 0; }
+  100% { background-position: -50% 0; }
+}

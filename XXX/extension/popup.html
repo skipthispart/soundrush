@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SoundRush</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <img src="icons/icon-48.png" alt="SoundRush" class="logo" />
+      <h1>SoundRush</h1>
+    </header>
+
+    <div id="current-page" class="section">
+      <p class="label">Current page:</p>
+      <p id="current-url" class="url">Loading...</p>
+      <button id="download-current" class="btn btn-primary" disabled>
+        Download from this page
+      </button>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <p class="label">Or paste a link:</p>
+      <input
+        type="text"
+        id="manual-url"
+        placeholder="Paste a YouTube / Spotify / SoundCloud link..."
+        class="input"
+      />
+      <button id="download-manual" class="btn btn-primary" disabled>
+        Download
+      </button>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <p class="label">Supported platforms:</p>
+      <div class="platforms">
+        <span class="badge">YouTube</span>
+        <span class="badge">Spotify</span>
+        <span class="badge">SoundCloud</span>
+        <span class="badge">Deezer</span>
+        <span class="badge">Tidal</span>
+        <span class="badge">Apple Music</span>
+        <span class="badge">Bandcamp</span>
+        <span class="badge">YouTube Music</span>
+      </div>
+    </div>
+
+    <footer>
+      <p class="hint">Tip: Right-click any link or page → "Download with SoundRush"</p>
+    </footer>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

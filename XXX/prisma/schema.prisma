@@ -1,0 +1,35 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Download {
+  id           String   @id @default(cuid())
+  url          String
+  platform     String
+  title        String
+  author       String?
+  thumbnail    String?
+  duration     Int?
+  mediaType    String   // "video" | "audio"
+  format       String   // e.g. "mp4-2160", "flac", "mp3-320"
+  quality      String   // e.g. "4K", "Lossless", "320kbps"
+  fileSize     Int?     // bytes
+  status       String   @default("pending") // pending | processing | completed | failed
+  progress     Int      @default(0) // 0-100
+  sessionId    String?
+  errorMessage String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([createdAt])
+  @@index([platform])
+  @@index([status])
+}
